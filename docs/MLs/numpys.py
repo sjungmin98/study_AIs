@@ -10,8 +10,26 @@ np_array = np.array([[7, 8]
 type(py_list)
 # <class 'list'>
 type(np_array)
+# <class 'numpy.ndarray'>
 
-#병합
+# class 타입 따른 편리성
+# py_list.sum()
+# Traceback (most recent call last):
+#   File "<string>", line 1, in <module>
+# AttributeError: 'list' object has no attribute 'sum'
+np_array.sum()
+# 57
+
+np_array.sum(axis=0)    # row 단위 연산
+# array([27, 30])
+np.sum(np_array, axis=0)
+# array([27, 30])
+np_array.sum(axis=1)    # column 단위 연산
+# array([15, 19, 23])
+np.sum(np_array, axis=1)
+# array([15, 19, 23])
+
+# 병합
 np_array_second = np.array(py_list)
 type(np_array_second)
 # <class 'numpy.ndarray'>
@@ -27,4 +45,38 @@ np.concatenate((np_array, np_array_second), axis=1) # column 단위 병합
 #        [ 9, 10,  3,  4],
 #        [11, 12,  5,  6]])
 
+# reshape() : 기존 배열을 재배열
+# 1차원 배열 생성
+arr = np.arange(10)
+print("원본 1차원 배열:")
+print(arr)
+arr.reshape(5,3)
+# Traceback (most recent call last):
+#   File "<string>", line 1, in <module>
+# ValueError: cannot reshape array of size 10 into shape (5,3)
+arr.reshape(5,2)
+# array([[0, 1],
+#        [2, 3],
+#        [4, 5],
+#        [6, 7],
+#        [8, 9]])
+arr
+# array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+arr.reshape(-1,2)
+# array([[0, 1],
+#        [2, 3],
+#        [4, 5],
+#        [6, 7],
+#        [8, 9]])
+arr.reshape(-1,1)
+# array([[0],
+#        [1],
+#        [2],
+#        [3],
+#        [4],
+#        [5],
+#        [6],
+#        [7],
+#        [8],
+#        [9]])
 pass
